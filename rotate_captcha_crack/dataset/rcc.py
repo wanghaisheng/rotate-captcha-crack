@@ -14,16 +14,16 @@ TypeRCCItem = Tuple[Tensor, Tensor]
 
 class RCCDataset(Dataset[TypeRCCItem]):
     """
-    dataset for RCCNet
+    Dataset for RCCNet (regression).
 
     Args:
         imgseq (TypeImgSeq): upstream dataset
-        target_size (int, optional): output img size. Defaults to DEFAULT_TARGET_SIZE.
-        norm (Normalize, optional): normalize policy. Defaults to DEFAULT_NORM.
+        target_size (int, optional): output img size. Defaults to `DEFAULT_TARGET_SIZE`.
+        norm (Normalize, optional): normalize policy. Defaults to `DEFAULT_NORM`.
 
     Methods:
         - `def __len__(self) -> int:` length of the dataset
-        - `def __getitem__(self, idx: int) -> TypeRCCItem:` get square img_ts and angle_ts\n
+        - `def __getitem__(self, idx: int) -> TypeRCCItem:` get square img_ts and angle_ts
             ([C,H,W]=[3,target_size,target_size], dtype=float32, range=[0.0,1.0)), ([N]=[1], dtype=float32, range=[0.0,1.0))
     """
 

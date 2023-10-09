@@ -18,7 +18,7 @@ from .model import WhereIsMyModel
 
 class Trainer(object):
     """
-    entry class for training
+    Entry point for training.
 
     Args:
         model (Module): support `RCCNet` and `RotNet`
@@ -82,7 +82,7 @@ class Trainer(object):
 
     def resume(self, index: int = -1) -> "Trainer":
         """
-        resume from index
+        Resume from a checkpoint index.
 
         Args:
             index (int, optional): resume from which index. -1 leads to the last training process. Defaults to -1.
@@ -98,7 +98,7 @@ class Trainer(object):
 
     def save_checkpoint(self) -> None:
         """
-        save checkpoint according to `finder`
+        Save checkpoint based on the `finder`.
         """
 
         checkpoint_dir = self.finder.model_dir / CKPT_PATH
@@ -128,7 +128,7 @@ class Trainer(object):
 
     def load_checkpoint(self) -> None:
         """
-        load checkpoint according to `finder`
+        Load checkpoint according to the `finder`.
         """
 
         checkpoint_dir = self.finder.model_dir / CKPT_PATH
@@ -149,7 +149,7 @@ class Trainer(object):
 
     def train(self) -> None:
         """
-        training entry point
+        Training entry point.
         """
 
         if self._is_new_task:
@@ -159,9 +159,7 @@ class Trainer(object):
             self.best_val_loss = sys.maxsize
             self.last_epoch = 0
             self.t_cost = 0.0
-
             (self.finder.model_dir / CKPT_PATH).mkdir(0o755, exist_ok=True)
-            (self.finder.model_dir / LOG_PATH).mkdir(0o755, exist_ok=True)
 
         for epoch_idx in range(self.last_epoch, self.epochs):
             start_t = time.perf_counter()

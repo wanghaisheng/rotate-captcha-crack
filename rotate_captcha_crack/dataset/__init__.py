@@ -4,4 +4,4 @@ from .rcc import RCCDataset
 from .rot import RotDataset
 from .typing import TypeImgTsSeq
 from .utils import from_google_streetview
-from .val import ValDataset
+from .validate import ValDataset
